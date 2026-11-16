@@ -1,0 +1,15 @@
+{
+	"name": "blobtoadlsgen001",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "32707918-a535-45ee-ad01-31d71705a64a",
+		"tenantId": "a26c5590-978b-4423-82a4-4be95dc3900f"
+	}
+}
