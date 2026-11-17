@@ -15,7 +15,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "destination",
+						"referenceName": "dest",
 						"type": "DatasetReference"
 					},
 					"name": "sink"
@@ -75,7 +75,7 @@
 				"splitpartition@amex derive(payment = coalesce(payment,'N/A')) ~> derivedColumn1",
 				"splitpartition@visa aggregate(groupBy(customer_id),",
 				"     product_id = max(product_id)) ~> aggregate1",
-				"aggregate1 alterRow(insertIf(1 == 1)) ~> alterRows",
+				"aggregate1 alterRow(insertIf(1==1)) ~> alterRows",
 				"alterRows sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
