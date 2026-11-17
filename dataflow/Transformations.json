@@ -16,9 +16,6 @@
 			"transformations": [
 				{
 					"name": "selectColumns"
-				},
-				{
-					"name": "aggregate1"
 				}
 			],
 			"scriptLines": [
@@ -26,7 +23,7 @@
 				"          transaction_id as string,",
 				"          transactional_date as string,",
 				"          product_id as string,",
-				"          customer_id as string,",
+				"          customer_id as integer,",
 				"          payment as string,",
 				"          credit_card as string,",
 				"          loyalty_card as string,",
@@ -47,8 +44,7 @@
 				"          price",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> selectColumns",
-				"selectColumns aggregate(groupBy(price)) ~> aggregate1"
+				"     skipDuplicateMapOutputs: true) ~> selectColumns"
 			]
 		}
 	}
