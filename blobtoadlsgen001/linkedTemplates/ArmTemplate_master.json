@@ -1,0 +1,91 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "blobtoadlsgen001"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
+		},
+		"azure_dest_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'azure_dest'"
+		},
+		"ls_adls_dest_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_adls_dest'"
+		},
+		"ls_blobtoadls_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_blobtoadls'"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsstore001.dfs.core.windows.net/"
+		},
+		"azure_dest_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsstore001.dfs.core.windows.net/"
+		},
+		"ls_adls_dest_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsstore001.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "blobtoadlsgen001_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureDataLakeStorage1_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
+					},
+					"azure_dest_accountKey": {
+						"value": "[parameters('azure_dest_accountKey')]"
+					},
+					"ls_adls_dest_accountKey": {
+						"value": "[parameters('ls_adls_dest_accountKey')]"
+					},
+					"ls_blobtoadls_connectionString": {
+						"value": "[parameters('ls_blobtoadls_connectionString')]"
+					},
+					"AzureDataLakeStorage1_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+					},
+					"azure_dest_properties_typeProperties_url": {
+						"value": "[parameters('azure_dest_properties_typeProperties_url')]"
+					},
+					"ls_adls_dest_properties_typeProperties_url": {
+						"value": "[parameters('ls_adls_dest_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
